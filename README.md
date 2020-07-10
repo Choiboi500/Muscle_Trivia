@@ -16,7 +16,7 @@ My game is called Muscles Trivia: The Game. It's an informative game for players
 
 **Initial Landing View**
 
-![image](home/choiboi50/Pictures)
+![image](/home/choiboi50/sei/projects/Muscle_Trivia/index.html)
 
 ## User Stories
 
