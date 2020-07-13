@@ -1,93 +1,91 @@
-// make data-base of questions and answers
-const elbowFlexion = {
-	question: 'Action: Elbow Flexion',
-	answer: 'BICEPS',
-};
-const elbowExtension = {
-	question: 'Action: Elbow Extension',
-	answer: 'TRICEPS',
-};
-const kneeFlexion = {
-	question: 'Action: Knee Flexion',
-	answer: 'HAMSTRINGS',
-};
-const kneeExtension = {
-	question: 'Action: Knee Extension',
-	answer: 'QUADRICEPS',
-};
-const hipFlexion = {
-	question: 'Action: Hip Flexion',
-	answer: 'ILIOPSOAS',
-};
-const hipExtension = {
-	question: 'Action: Hip Extension',
-	answer: 'GLUTEUS MAXIMUS',
-};
-const anteriorShoulderFlexion = {
-	question: 'Action: Anterior Shoulder Flexion',
-	answer: 'ANTERIOR DELTOID',
-};
-const lateralShoulderFlexion = {
-	question: 'Action: Frontal Humeral Abduction',
-	answer: 'LATERAL DELTOID',
-};
-const scapularElevation = {
-	question: 'Action: Scapular Elevation',
-	answer: 'TRAPEZIUS',
-};
-const breathing = {
-	question: 'Action: Breathing',
-	answer: 'DIAPHRAGM',
-};
-const externalScapularRotation = {
-	question: 'Action: External Scapular Rotation',
-	answer: 'LATISSIMUS DORSI',
-};
-const chestFlexion = {
-	question: 'Action: Horizontal Humeral Adduction',
-	answer: 'PECTORALIS',
-};
-let questionAnswer = [
-	elbowExtension,
-	kneeFlexion,
-	kneeExtension,
-	hipFlexion,
-	hipExtension,
-	anteriorShoulderFlexion,
-	lateralShoulderFlexion,
-	scapularElevation,
-	breathing,
-	externalScapularRotation,
-	chestFlexion,
-];
-let mainHeader = document.querySelector('.mainHeader');
-//  =
-// 	for (i=0;i<questionAnswer.length;i++){}
-// 	console.log(questionAnswer);
+// data-base of questions and answers
 
-// 	questionAnswer[Math.floor(Math.random() * questionAnswer.length)];
+const questionAnswer = [
+	{
+		question: 'Action: Elbow Flexion',
+		answer: 'BICEPS',
+	},
+	{
+		question: 'Action: Elbow Extension',
+		answer: 'TRICEPS',
+	},
+	{
+		question: 'Action: Knee Flexion',
+		answer: 'HAMSTRINGS',
+	},
+	{
+		question: 'Action: Knee Extension',
+		answer: 'QUADRICEPS',
+	},
+	{
+		question: 'Action: Hip Flexion',
+		answer: 'ILIOPSOAS',
+	},
+	{
+		question: 'Action: Hip Extension',
+		answer: 'GLUTEUS MAXIMUS',
+	},
+	{
+		question: 'Action: Anterior Shoulder Flexion',
+		answer: 'ANTERIOR DELTOID',
+	},
+	{
+		question: 'Action: Frontal Humeral Abduction',
+		answer: 'LATERAL DELTOID',
+	},
+	{
+		question: 'Action: Scapular Elevation',
+		answer: 'TRAPEZIUS',
+	},
+	{
+		question: 'Action: Breathing',
+		answer: 'DIAPHRAGM',
+	},
+	{
+		question: 'Action: External Scapular Rotation',
+		answer: 'LATISSIMUS DORSI',
+	},
+	{
+		question: 'Action: Horizontal Humeral Adduction',
+		answer: 'PECTORALIS',
+	},
+];
+
+let currentNumber;
+let mainHeader = document.querySelector('.mainHeader');
+
 const startButton = document.querySelector('.startButton');
+const submitButton = document.querySelector('.submitButton');
+const inputField = document.querySelector('#inputField');
 startButton.addEventListener('click', randomDraw);
+submitButton.addEventListener('click', checkAnswer);
 
 function randomDraw() {
-	let randomQuestion = questionAnswer.splice(
-		Math.floor(Math.random() * questionAnswer.length),
-		1
-	);
+	currentNumber = Math.floor(Math.random() * questionAnswer.length);
 
-	mainHeader.innerHTML = randomQuestion[0].question;
+	mainHeader.innerHTML = questionAnswer[currentNumber].question;
 
-	if (document.querySelector('.userInput').value === randomQuestion[0].answer) {
-		console.log('true');
-	} else {
-		console.log('false');
-	}
-	startButton.innerHTML = 'Submit';
-	// submitButton.style.display = "inline";
 	inputField.style.display = 'inline';
+	startButton.style.display = 'none';
+	submitButton.style.display = 'inline';
+}
+let numberCorrect = 0;
+function checkAnswer() {
+	const correctAnswer = questionAnswer[currentNumber].answer;
+	const userInput = inputField.value.toUpperCase();
+	if (userInput === correctAnswer) {
+		numberCorrect += 1;
+		randomDraw(event);
+		inputField.value = '';
+	} else {
+		randomDraw(event);
+	}
 }
 
 // function lastScreen (){
+// mainHeader.innerHTML = 'Great Job! You got '++'/10'
+// mainHeader.innerHTML = 'Almost There! You got '++'/10'
+// mainHeader.innerHTML = 'Good Start! You got '++'/10'
 // 	if ()
 // }
 
