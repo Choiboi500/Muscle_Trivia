@@ -1,51 +1,109 @@
-// make data-base of questions
-let questions = [
-	`Action: Elbow Flexion`,
-	`Action: Elbow Extension`,
-	`Action: Knee Flexion`,
-	`Action: Knee Extension`,
-	`Action: Hip Flexion`,
-	`Action: Hip Extension`,
-	`Action: Anterior Shoulder Flexion`,
-	`Action: Frontal Humeral Abduction`,
-	`Action: Scapular Elevation`,
-	`Action: Breathing`,
-	`Action: External Scapular Rotation`,
-	`Action: Horizontal Humeral Adduction`,
+// make data-base of questions and answers
+const elbowFlexion = {
+	question: 'Action: Elbow Flexion',
+	answer: 'BICEPS',
+};
+const elbowExtension = {
+	question: 'Action: Elbow Extension',
+	answer: 'TRICEPS',
+};
+const kneeFlexion = {
+	question: 'Action: Knee Flexion',
+	answer: 'HAMSTRINGS',
+};
+const kneeExtension = {
+	question: 'Action: Knee Extension',
+	answer: 'QUADRICEPS',
+};
+const hipFlexion = {
+	question: 'Action: Hip Flexion',
+	answer: 'ILIOPSOAS',
+};
+const hipExtension = {
+	question: 'Action: Hip Extension',
+	answer: 'GLUTEUS MAXIMUS',
+};
+const anteriorShoulderFlexion = {
+	question: 'Action: Anterior Shoulder Flexion',
+	answer: 'ANTERIOR DELTOID',
+};
+const lateralShoulderFlexion = {
+	question: 'Action: Frontal Humeral Abduction',
+	answer: 'LATERAL DELTOID',
+};
+const scapularElevation = {
+	question: 'Action: Scapular Elevation',
+	answer: 'TRAPEZIUS',
+};
+const breathing = {
+	question: 'Action: Breathing',
+	answer: 'DIAPHRAGM',
+};
+const externalScapularRotation = {
+	question: 'Action: External Scapular Rotation',
+	answer: 'LATISSIMUS DORSI',
+};
+const chestFlexion = {
+	question: 'Action: Horizontal Humeral Adduction',
+	answer: 'PECTORALIS',
+};
+let questionAnswer = [
+	elbowExtension,
+	kneeFlexion,
+	kneeExtension,
+	hipFlexion,
+	hipExtension,
+	anteriorShoulderFlexion,
+	lateralShoulderFlexion,
+	scapularElevation,
+	breathing,
+	externalScapularRotation,
+	chestFlexion,
 ];
+let mainHeader = document.querySelector('.mainHeader');
+//  =
+// 	for (i=0;i<questionAnswer.length;i++){}
+// 	console.log(questionAnswer);
 
-// make data-base of answers
-const biceps = `BICEPS`;
-const triceps = `TRICEPS`;
-const hamstrings = `HAMSTRINGS`;
-const quadriceps = `QUADRICEPS`;
-const ilioPsoas = `ILIOPSOAS`;
-const gluteusMaximus = `GLUTEUS MAXIMUS`;
-const anteriorDeltoid = `ANTERIOR DELTOID`;
-const lateralDeltoid = `LATERAL DELTOID`;
-const trapezius = `TRAPEZIUS`;
-const diaphragm = `DIAPHRAGM`;
-const latissimusDorsi = `LATISSIMUS DORSI`;
-const pectoralis = `PECTORALIS`;
+// 	questionAnswer[Math.floor(Math.random() * questionAnswer.length)];
+const startButton = document.querySelector('.startButton');
+startButton.addEventListener('click', randomDraw);
+
+function randomDraw() {
+	let randomQuestion = questionAnswer.splice(
+		Math.floor(Math.random() * questionAnswer.length),
+		1
+	);
+
+	mainHeader.innerHTML = randomQuestion[0].question;
+
+	if (document.querySelector('.userInput').value === randomQuestion[0].answer) {
+		console.log('true');
+	} else {
+		console.log('false');
+	}
+	startButton.innerHTML = 'Submit';
+	// submitButton.style.display = "inline";
+	inputField.style.display = 'inline';
+}
+
+// function lastScreen (){
+// 	if ()
+// }
 
 //create array variable for answers and current answer to start game
-let answers = [];
-let currentAnswer = 0;
+// let answers = [];
+// let currentAnswer = 0;
 
 // make start button clicked change h1 to question, create input section, and create submit button
-const startButton = document.querySelector('.startButton');
-function randomDraw() {
-	const mainHeader = document.querySelector('.mainHeader');
-	mainHeader.innerHTML =
-		questions[Math.floor(Math.random() * questions.length)];
-	startButton.innerText = 'Submit';
-}
+
+//
 // make any input change toUpperCase after Submit is clicked
 
 // create function to random draw from array and display
 
 // if I get an answer right, store it
-// if I don't get an answer right, don't store it
+// if I don"t get an answer right, don"t store it
 
 // make Submit click generate new random question
 
