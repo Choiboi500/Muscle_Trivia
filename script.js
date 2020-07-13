@@ -70,22 +70,42 @@ function randomDraw() {
 	submitButton.style.display = 'inline';
 }
 let numberCorrect = 0;
+let totalQuestions = 0;
 function checkAnswer() {
 	const correctAnswer = questionAnswer[currentNumber].answer;
 	const userInput = inputField.value.toUpperCase();
 	if (userInput === correctAnswer) {
 		numberCorrect += 1;
+		totalQuestions += 1;
 		randomDraw(event);
 		inputField.value = '';
 	} else {
 		randomDraw(event);
+		inputField.value = '';
+		totalQuestions += 1;
+	}
+	
+}
+function finalScreen() {
+	if (totalQuestions === 10) {
+		if (numberCorrect >= 9) {
+			mainHeader.innerHTML = 'Great Job! You got ' + numberCorrect + '/10';
+		} else if (numberCorrect >= 7) {
+			mainHeader.innerHTML = 'Almost There! You got ' + numberCorrect + '/10';
+		} else {
+			mainHeader.innerHTML = 'Good Start! You got ' + numberCorrect + '/10';
+		}
+		inputField.style.display = 'none';
+		startButton.style.display = 'inline';
+		startButton.innerHTML = 'New Game';
+		submitButton.style.display = 'none';
 	}
 }
 
 // function lastScreen (){
 // mainHeader.innerHTML = 'Great Job! You got '++'/10'
-// mainHeader.innerHTML = 'Almost There! You got '++'/10'
-// mainHeader.innerHTML = 'Good Start! You got '++'/10'
+// mainHeader.innerHTML = 'Almost There! You got '+numberCorrect+'/10'
+// mainHeader.innerHTML = 'Good Start! You got '+numberCorrect+'/10'
 // 	if ()
 // }
 
