@@ -104,12 +104,12 @@ function finalScreen() {
 	if (totalQuestions === 10) {
 		if (numberCorrect >= 9) {
 			mainHeader.innerHTML =
-				'Great Job!' + ' You got ' + numberCorrect + '/10.';
+				'Great Job!' + ' You got ' + numberCorrect + '/10!';
 			totalQuestions = 0;
 			questionAnswer=[...originalQuestionAnswer];
 		} else if (numberCorrect >= 7) {
 			mainHeader.innerHTML =
-				'Almost There!' + ' You got ' + numberCorrect + '/10.';
+				'Almost There!' + ' You got ' + numberCorrect + '/10!';
 			totalQuestions = 0;
 			questionAnswer = [...originalQuestionAnswer];
 		} else {
