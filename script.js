@@ -1,6 +1,6 @@
 // array of questions and answers
 
-const originalQuestionAnswer = [
+const originalMuscleQA = [
 	{
 		question: 'Action: Elbow Flexion',
 		answer: 'BICEPS',
@@ -50,96 +50,125 @@ const originalQuestionAnswer = [
 		answer: 'PECTORALIS',
 	},
 ];
-const boneQuestionAnswer = [
+const originalBoneQA = [
 	{
-		question: 'Upper part of the arm',
+		question: 'Location: Upper part of the arm',
 		answer: 'HUMERUS',
 	},
 	{
-		question: 'Hip Bone',
+		question: 'Location: Hip Bone',
 		answer: 'PELVIS',
 	},
 	{
-		question: 'Houses Brain',
+		question: 'Location: Houses Brain',
 		answer: 'CRANIUM',
 	},
 	{
-		question: 'Jaw Bone',
+		question: 'Location: Jaw Bone',
 		answer: 'MANDIBLE',
 	},
 	{
-		question: 'Fingers and Toes',
+		question: 'Location: Fingers and Toes',
 		answer: 'PHALANGES',
 	},
 	{
-		question: 'Collar Bone',
+		question: 'Location: Collar Bone',
 		answer: 'CLAVICLE',
 	},
 	{
-		question: 'Upper part of the leg',
+		question: 'Location: Upper part of the leg',
 		answer: 'FEMUR',
 	},
 	{
-		question: 'Knee Cap',
+		question: 'Location: Knee Cap',
 		answer: 'PATELLA',
 	},
 	{
-		question: 'Tail Bone',
+		question: 'Location: Tail Bone',
 		answer: 'COCCYX',
 	},
 	{
-		question: 'Shoulder Blade',
+		question: 'Location: Shoulder Blade',
 		answer: 'SCAPULA',
 	},
 	{
-		question: 'Top of Sternum',
+		question: 'Location: Top of Sternum',
 		answer: 'MANUBRIUM',
 	},
 	{
-		question: 'Forearm "Pinky Finger" Side',
-		answer: 'ULNA'
-	}
-	
+		question: 'Location: Forearm "Pinky Finger" Side',
+		answer: 'ULNA',
+	},
 ];
 
-let questionAnswer = [...originalQuestionAnswer];
+let muscleQA = [...originalMuscleQA];
+let boneQA = [...originalBoneQA];
 // add event listeners
 let mainHeader = document.querySelector('.mainHeader');
 
 const startButton = document.querySelector('.startButton');
-const submitButton = document.querySelector('.submitButton');
+const submitButtonMuscles = document.querySelector('.submitButtonMuscles');
+const submitButtonBones = document.querySelector('.submitButtonBones');
 const inputField = document.querySelector('#inputField');
-startButton.addEventListener('click', randomDraw);
-submitButton.addEventListener('click', checkAnswer);
+const musclesButton = document.querySelector('.musclesButton');
+const bonesButton = document.querySelector('.bonesButton');
+startButton.addEventListener('click', optionsMenu);
+musclesButton.addEventListener('click', muscleRandomDraw);
+bonesButton.addEventListener('click', bonesRandomDraw);
+submitButtonMuscles.addEventListener('click', checkMuscleAnswer);
+submitButtonBones.addEventListener('click', checkBoneAnswer);
+
+function optionsMenu() {
+	musclesButton.style.display = 'inline';
+	bonesButton.style.display = 'inline';
+	startButton.style.display = 'none';
+	submitButtonMuscles.style.display = 'none';
+	mainHeader.innerHTML = 'Which anatomy are we working on?';
+}
 
 //function for drawing random question
 let currentNumber;
-function randomDraw() {
+function muscleRandomDraw() {
 	totalQuestions;
 
-	currentNumber = Math.floor(Math.random() * questionAnswer.length);
+	currentNumber = Math.floor(Math.random() * muscleQA.length);
 
-	mainHeader.innerHTML = questionAnswer[currentNumber].question;
+	mainHeader.innerHTML = muscleQA[currentNumber].question;
 
 	inputField.style.display = 'inline';
 	startButton.style.display = 'none';
-	submitButton.style.display = 'inline';
+	submitButtonMuscles.style.display = 'inline';
+	musclesButton.style.display = 'none';
+	bonesButton.style.display = 'none';
+}
+function bonesRandomDraw() {
+	totalQuestions;
+
+	currentNumber = Math.floor(Math.random() * boneQA.length);
+
+	mainHeader.innerHTML = boneQA[currentNumber].question;
+
+	inputField.style.display = 'inline';
+	startButton.style.display = 'none';
+	submitButtonBones.style.display = 'inline';
+	bonesButton.style.display = 'none';
+	musclesButton.style.display = 'none';
 }
 // function to add correct answers and check answers for match
 let numberCorrect = 0;
 let totalQuestions = 0;
-function checkAnswer() {
-	if (questionAnswer.length > 3) {
-		const correctAnswer = questionAnswer[currentNumber].answer;
-		const userInput = inputField.value.toUpperCase();
-		questionAnswer.splice(currentNumber, 1);
+function checkMuscleAnswer() {
+	if (muscleQA.length > 3) {
+		let correctAnswer = muscleQA[currentNumber].answer;
+		let userInput = inputField.value.toUpperCase();
+		muscleQA.splice(currentNumber, 1);
 		if (userInput === correctAnswer) {
 			numberCorrect += 1;
 			totalQuestions += 1;
-			randomDraw(event);
+			muscleRandomDraw(event);
 			inputField.value = '';
 		} else {
-			randomDraw(event);
+			muscleRandomDraw(event);
 			inputField.value = '';
 			totalQuestions += 1;
 		}
@@ -149,40 +178,57 @@ function checkAnswer() {
 		finalScreen();
 	}
 }
+function checkBoneAnswer() {
+	if (boneQA.length > 3) {
+		let correctAnswer = boneQA[currentNumber].answer;
+		let userInput = inputField.value.toUpperCase();
+		boneQA.splice(currentNumber, 1);
+		if (userInput === correctAnswer) {
+			numberCorrect += 1;
+			totalQuestions += 1;
+			bonesRandomDraw(event);
+			inputField.value = '';
+		} else {
+			bonesRandomDraw(event);
+			inputField.value = '';
+			totalQuestions += 1;
+		}
+	} else {
+		totalQuestions += 1;
+		finalScreen();
+	}
+}
 // function to display final screen when conditions are met
 function finalScreen() {
-	console.log('this is the final screen fx', totalQuestions);
-
 	if (totalQuestions === 10) {
 		if (numberCorrect >= 9) {
 			mainHeader.innerHTML =
 				'Great Job!' + ' You got ' + numberCorrect + '/10!';
 			totalQuestions = 0;
-			questionAnswer=[...originalQuestionAnswer];
+			muscleQA = [...originalMuscleQA];
+			boneQA = [...originalBoneQA];
 		} else if (numberCorrect >= 7) {
 			mainHeader.innerHTML =
 				'Almost There!' + ' You got ' + numberCorrect + '/10!';
 			totalQuestions = 0;
-			questionAnswer = [...originalQuestionAnswer];
+			muscleQA = [...originalMuscleQA];
+			boneQA = [...originalBoneQA];
 		} else {
 			mainHeader.innerHTML =
 				'Everyone Starts Somewhere!' + ' You got ' + numberCorrect + '/10.';
 			totalQuestions = 0;
-			questionAnswer = [...originalQuestionAnswer];
+			muscleQA = [...originalMuscleQA];
+			boneQA = [...originalBoneQA];
 		}
 		inputField.style.display = 'none';
 		startButton.style.display = 'inline';
-		startButton.innerHTML = 'New Game';
-		submitButton.style.display = 'none';
+		startButton.value = 'New Game';
+		submitButtonMuscles.style.display = 'none';
+		submitButtonBones.style.display = 'none';
 	}
 }
 
-// function lastScreen (){
-// mainHeader.innerHTML = 'Great Job! You got '++'/10'
-// mainHeader.innerHTML = 'Almost There! You got '+numberCorrect+'/10'
-// mainHeader.innerHTML = 'Good Start! You got '+numberCorrect+'/10'
-// 	if ()
-// }
+
 
 //create array variable for answers and current answer to start game
 // let answers = [];

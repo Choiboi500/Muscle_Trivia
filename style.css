@@ -7,30 +7,46 @@ body {
 }
 #title {
 	font-family: 'Londrina Shadow', cursive;
-    font-size: 60px;
-    color: white
+	font-size: 60px;
+	color: white;
 }
 .flashCard {
 	height: auto;
 	background-size: auto;
 	position: relative;
 	margin: 40px 0 0 40px;
-	border-radius: 12px;
+    border-radius: 12px;
+    padding: 5px 10px 10px 0;
 	background: white;
 	text-align: center;
-    text-size-adjust: auto;
-    color: black
+	text-size-adjust: auto;
+	color: black;
 }
 .mainHeader {
 	padding-top: 40px;
 }
-.submitButton {
+.submitButtonMuscles {
 	display: none;
-	margin:0 0 50px 0;
+	margin: 0 0 50px 0;
+}
+.submitButtonBones {
+	display: none;
+	margin: 0 0 50px 0;
 }
 .userInput {
 	display: none;
 }
 .startButton {
-	margin-bottom: 50px;
+    margin-bottom: 50px;
+    
+}
+.musclesButton {
+    display: none;
+    	margin: 0 0 50px 0;
+
+}
+.bonesButton {
+    display: none;
+    	margin: 0 0 50px 0;
+
 }
