@@ -1,6 +1,6 @@
 // array of questions and answers
 
-const questionAnswer = [
+const originalQuestionAnswer = [
 	{
 		question: 'Action: Elbow Flexion',
 		answer: 'BICEPS',
@@ -50,7 +50,7 @@ const questionAnswer = [
 		answer: 'PECTORALIS',
 	},
 ];
-
+let questionAnswer = [...originalQuestionAnswer];
 // add event listeners
 let mainHeader = document.querySelector('.mainHeader');
 
@@ -73,37 +73,50 @@ function randomDraw() {
 	startButton.style.display = 'none';
 	submitButton.style.display = 'inline';
 }
-
+// function to add correct answers and check answers for match
 let numberCorrect = 0;
 let totalQuestions = 0;
 function checkAnswer() {
-	const correctAnswer = questionAnswer[currentNumber].answer;
-	const userInput = inputField.value.toUpperCase();
-	if (userInput === correctAnswer) {
-		numberCorrect += 1;
-		totalQuestions += 1;
-		randomDraw(event);
-		inputField.value = '';
+	if (questionAnswer.length > 3) {
+		const correctAnswer = questionAnswer[currentNumber].answer;
+		const userInput = inputField.value.toUpperCase();
+		questionAnswer.splice(currentNumber, 1);
+		if (userInput === correctAnswer) {
+			numberCorrect += 1;
+			totalQuestions += 1;
+			randomDraw(event);
+			inputField.value = '';
+		} else {
+			randomDraw(event);
+			inputField.value = '';
+			totalQuestions += 1;
+		}
 	} else {
-		randomDraw(event);
-		inputField.value = '';
+		console.log('got last screen');
 		totalQuestions += 1;
+		finalScreen();
 	}
-	finalScreen();
 }
+// function to display final screen when conditions are met
 function finalScreen() {
+	console.log('this is the final screen fx', totalQuestions);
+
 	if (totalQuestions === 10) {
 		if (numberCorrect >= 9) {
-			mainHeader.innerHTML = 'Great Job!' + ' You got ' + numberCorrect + '/10.';
+			mainHeader.innerHTML =
+				'Great Job!' + ' You got ' + numberCorrect + '/10.';
 			totalQuestions = 0;
+			questionAnswer=[...originalQuestionAnswer];
 		} else if (numberCorrect >= 7) {
 			mainHeader.innerHTML =
 				'Almost There!' + ' You got ' + numberCorrect + '/10.';
 			totalQuestions = 0;
+			questionAnswer = [...originalQuestionAnswer];
 		} else {
 			mainHeader.innerHTML =
 				'Everyone Starts Somewhere!' + ' You got ' + numberCorrect + '/10.';
 			totalQuestions = 0;
+			questionAnswer = [...originalQuestionAnswer];
 		}
 		inputField.style.display = 'none';
 		startButton.style.display = 'inline';
