@@ -1,4 +1,4 @@
-// data-base of questions and answers
+// array of questions and answers
 
 const questionAnswer = [
 	{
@@ -51,7 +51,7 @@ const questionAnswer = [
 	},
 ];
 
-let currentNumber;
+// add event listeners
 let mainHeader = document.querySelector('.mainHeader');
 
 const startButton = document.querySelector('.startButton');
@@ -60,7 +60,11 @@ const inputField = document.querySelector('#inputField');
 startButton.addEventListener('click', randomDraw);
 submitButton.addEventListener('click', checkAnswer);
 
+//function for drawing random question
+let currentNumber;
 function randomDraw() {
+	totalQuestions;
+
 	currentNumber = Math.floor(Math.random() * questionAnswer.length);
 
 	mainHeader.innerHTML = questionAnswer[currentNumber].question;
@@ -69,6 +73,7 @@ function randomDraw() {
 	startButton.style.display = 'none';
 	submitButton.style.display = 'inline';
 }
+
 let numberCorrect = 0;
 let totalQuestions = 0;
 function checkAnswer() {
@@ -84,16 +89,21 @@ function checkAnswer() {
 		inputField.value = '';
 		totalQuestions += 1;
 	}
-	
+	finalScreen();
 }
 function finalScreen() {
 	if (totalQuestions === 10) {
 		if (numberCorrect >= 9) {
-			mainHeader.innerHTML = 'Great Job! You got ' + numberCorrect + '/10';
+			mainHeader.innerHTML = 'Great Job!' + ' You got ' + numberCorrect + '/10.';
+			totalQuestions = 0;
 		} else if (numberCorrect >= 7) {
-			mainHeader.innerHTML = 'Almost There! You got ' + numberCorrect + '/10';
+			mainHeader.innerHTML =
+				'Almost There!' + ' You got ' + numberCorrect + '/10.';
+			totalQuestions = 0;
 		} else {
-			mainHeader.innerHTML = 'Good Start! You got ' + numberCorrect + '/10';
+			mainHeader.innerHTML =
+				'Everyone Starts Somewhere!' + ' You got ' + numberCorrect + '/10.';
+			totalQuestions = 0;
 		}
 		inputField.style.display = 'none';
 		startButton.style.display = 'inline';

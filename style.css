@@ -1,27 +1,36 @@
-
 body {
-	font-family: helvetica, sans-serif;
+	font-family: 'helvetica';
 	margin: 0 auto;
 	max-width: 600px;
-    background: yellowgreen;
-    text-align: center;
+	background: #6da2e7;
+	text-align: center;
+}
+#title {
+	font-family: 'Londrina Shadow', cursive;
+    font-size: 60px;
+    color: white
 }
 .flashCard {
-	height: 200px;
-	background-size: cover;
+	height: auto;
+	background-size: auto;
 	position: relative;
-	margin: 40px 0 0 0;
-    border-radius: 12px;
-    background: blue;
-    text-align: center;
-    
+	margin: 40px 0 0 40px;
+	border-radius: 12px;
+	background: white;
+	text-align: center;
+    text-size-adjust: auto;
+    color: black
 }
-.mainHeader{
-    padding-top: 40px;
+.mainHeader {
+	padding-top: 40px;
 }
 .submitButton {
-    display: none;
+	display: none;
+	margin-bottom: 50px;
 }
-.userInput{
-    display: none;
+.userInput {
+	display: none;
+}
+.startButton {
+	margin-bottom: 50px;
 }
