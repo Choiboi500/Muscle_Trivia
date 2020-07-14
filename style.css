@@ -1,6 +1,6 @@
 body {
 	font-family: 'helvetica';
-	margin: 0 auto;
+	margin: auto;
 	max-width: 600px;
 	background: #6da2e7;
 	text-align: center;
@@ -11,12 +11,13 @@ body {
 	color: white;
 }
 .flashCard {
+	display: block;
 	height: auto;
 	background-size: auto;
-	position: relative;
-	margin: 40px 0 0 40px;
-    border-radius: 12px;
-    padding: 5px 10px 10px 0;
+	position: center;
+	margin: 0 10px 0 10px;
+	border-radius: 12px;
+	padding: 10px 10px 10px 0;
 	background: white;
 	text-align: center;
 	text-size-adjust: auto;
@@ -37,16 +38,13 @@ body {
 	display: none;
 }
 .startButton {
-    margin-bottom: 50px;
-    
+	margin-bottom: 50px;
 }
 .musclesButton {
-    display: none;
-    	margin: 0 0 50px 0;
-
+	display: none;
+	margin: 0 0 50px 0;
 }
 .bonesButton {
-    display: none;
-    	margin: 0 0 50px 0;
-
+	display: none;
+	margin: 0 0 50px 0;
 }
