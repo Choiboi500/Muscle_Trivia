@@ -50,6 +50,58 @@ const originalQuestionAnswer = [
 		answer: 'PECTORALIS',
 	},
 ];
+const boneQuestionAnswer = [
+	{
+		question: 'Upper part of the arm',
+		answer: 'HUMERUS',
+	},
+	{
+		question: 'Hip Bone',
+		answer: 'PELVIS',
+	},
+	{
+		question: 'Houses Brain',
+		answer: 'CRANIUM',
+	},
+	{
+		question: 'Jaw Bone',
+		answer: 'MANDIBLE',
+	},
+	{
+		question: 'Fingers and Toes',
+		answer: 'PHALANGES',
+	},
+	{
+		question: 'Collar Bone',
+		answer: 'CLAVICLE',
+	},
+	{
+		question: 'Upper part of the leg',
+		answer: 'FEMUR',
+	},
+	{
+		question: 'Knee Cap',
+		answer: 'PATELLA',
+	},
+	{
+		question: 'Tail Bone',
+		answer: 'COCCYX',
+	},
+	{
+		question: 'Shoulder Blade',
+		answer: 'SCAPULA',
+	},
+	{
+		question: 'Top of Sternum',
+		answer: 'MANUBRIUM',
+	},
+	{
+		question: 'Forearm "Pinky Finger" Side',
+		answer: 'ULNA'
+	}
+	
+];
+
 let questionAnswer = [...originalQuestionAnswer];
 // add event listeners
 let mainHeader = document.querySelector('.mainHeader');
