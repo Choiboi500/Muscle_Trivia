@@ -8,7 +8,9 @@
 - Players can see their end-score to improve on over time.
 
 ## Technologies Used
-- VS Code
+- HTML
+- CSS
+- JavaScript
 
 ## Installation Instructions
 To set up the app locally on your own system:
