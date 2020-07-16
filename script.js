@@ -203,19 +203,23 @@ function finalScreen() {
 	if (totalQuestions === 10) {
 		if (numberCorrect >= 9) {
 			mainHeader.innerHTML =
-				'Great Job!' + ' You got ' + numberCorrect + '/10!';
+				'Great Job!' + '\n' + 'You got ' + numberCorrect + '/10!';
 			totalQuestions = 0;
 			muscleQA = [...originalMuscleQA];
 			boneQA = [...originalBoneQA];
 		} else if (numberCorrect >= 7) {
 			mainHeader.innerHTML =
-				'Almost There!' + ' You got ' + numberCorrect + '/10!';
+				'Almost There!' + '\n' + 'You got ' + numberCorrect + '/10!';
 			totalQuestions = 0;
 			muscleQA = [...originalMuscleQA];
 			boneQA = [...originalBoneQA];
 		} else {
 			mainHeader.innerHTML =
-				'Everyone Starts Somewhere!' + ' You got ' + numberCorrect + '/10.';
+				'Everyone Starts Somewhere!' +
+				'\n' +
+				'You got ' +
+				numberCorrect +
+				'/10.';
 			totalQuestions = 0;
 			muscleQA = [...originalMuscleQA];
 			boneQA = [...originalBoneQA];
@@ -227,8 +231,6 @@ function finalScreen() {
 		submitButtonBones.style.display = 'none';
 	}
 }
-
-
 
 //create array variable for answers and current answer to start game
 // let answers = [];
